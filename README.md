@@ -58,6 +58,9 @@ I deployed a traditional **LAMP stack** on an AWS EC2 Ubuntu server, covering th
 
 ## 1. Provisioning the EC2 Instance
 
+<img width="637" height="301" alt="image" src="https://github.com/user-attachments/assets/68fa1327-75a1-4474-9082-b7b3777336a0" />
+
+
 I launched an Ubuntu EC2 instance (`t3.micro`) on AWS and connected to it remotely using SSH with a private key pair generated during instance setup.
 
 The initial server preparation included updating and upgrading installed packages:
