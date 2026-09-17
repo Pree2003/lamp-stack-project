@@ -84,6 +84,7 @@ I installed Apache, enabled it to start automatically, verified the service was 
 
 <img width="537" height="386" alt="image" src="https://github.com/user-attachments/assets/e67ea0bd-86c1-44f3-8b1e-dd164a307d1e" />
 
+<img width="408" height="324" alt="image" src="https://github.com/user-attachments/assets/6930dc7c-443e-4b05-abae-feb87c3d67c7" />
 
 
 ```bash
