@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/32350270/README.md)
 # LAMP Stack Deployment on AWS EC2
 
 > Hands-on deployment of a Linux, Apache, MySQL, and PHP (LAMP) environment on AWS EC2 — from provisioning the server to configuring each layer and verifying the full stack works end to end.
@@ -25,6 +26,7 @@ I deployed a traditional **LAMP stack** on an AWS EC2 Ubuntu server, covering th
 
 ## Architecture
 
+```text
                          Internet
                             │
                             │ HTTP :80
@@ -52,6 +54,7 @@ I deployed a traditional **LAMP stack** on an AWS EC2 Ubuntu server, covering th
                             │ SSH :22
                             │
                       Administrator
+```
 
 ## 1. Provisioning the EC2 Instance
 
@@ -59,39 +62,47 @@ I launched an Ubuntu EC2 instance (`t3.micro`) on AWS and connected to it remote
 
 The initial server preparation included updating and upgrading installed packages:
 
+```bash
 sudo apt update
 sudo apt upgrade
+```
 
 ## 2. Apache Web Server
 
 I installed Apache, enabled it to start automatically, verified the service was active, and confirmed that it was serving HTTP requests.
 
+```bash
 sudo apt install apache2 -y
 sudo systemctl enable apache2
 sudo systemctl status apache2
 curl http://localhost:80
+```
 
 Apache was tested locally using `curl` before being accessed externally through a browser.
 
-## 3. MYSQL Database
+## 3. MySQL Database
 
 I installed MySQL, enabled the service, and used `mysql_secure_installation` to apply the available security-hardening options.
 
+```bash
 sudo apt install mysql-server -y
 sudo systemctl enable --now mysql
 sudo mysql_secure_installation
 sudo mysql -p
+```
 
 Authenticated access to MySQL was then verified.
 
-> Security note:Credentials used during the original setup are not included in this repository.
+> **Security note:** Credentials used during the original setup are not included in this repository.
 
 ## 4. PHP Runtime
 
 I installed PHP together with the Apache PHP module and MySQL integration package.
 
+```bash
 sudo apt install php libapache2-mod-php php-mysql -y
 php -v
+```
 
 This allowed Apache to process PHP files and provided PHP-to-MySQL connectivity.
 
@@ -99,26 +110,32 @@ This allowed Apache to process PHP files and provided PHP-to-MySQL connectivity.
 
 Rather than using Apache's default site, I created a dedicated document root and custom virtual host for the project.
 
+```text
 DocumentRoot: /var/www/projectlamp
 Config file: /etc/apache2/sites-available/projectlamp.conf
+```
 
 The virtual host configuration was:
 
-<VirtualHost \*:80>
-ServerName projectlamp
-ServerAlias www.projectlamp
-ServerAdmin webmaster@localhost
-DocumentRoot /var/www/projectlamp
-ErrorLog ${APACHE_LOG_DIR}/error.log
-CustomLog ${APACHE_LOG_DIR}/access.log combined
+```apache
+<VirtualHost *:80>
+    ServerName projectlamp
+    ServerAlias www.projectlamp
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/projectlamp
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+```
 
 The default Apache site was disabled and the project virtual host was enabled:
 
+```bash
 sudo a2dissite 000-default.conf
 sudo a2ensite projectlamp.conf
 sudo apache2ctl configtest
 sudo systemctl reload apache2
+```
 
 I also updated Apache's directory index configuration so that `index.php` takes priority over `index.html`, allowing the PHP entry point to load by default.
 
@@ -126,7 +143,9 @@ I also updated Apache's directory index configuration so that `index.php` takes 
 
 Finally, I created a PHP test script in the project's document root and verified that Apache correctly processed the PHP file.
 
+```bash
 echo "<?php phpinfo(); ?>" | sudo tee /var/www/projectlamp/index.php
+```
 
 The resulting PHP information page confirmed that PHP was being executed through Apache.
 
@@ -152,23 +171,36 @@ The resulting PHP information page confirmed that PHP was being executed through
 
 ## Repository Structure
 
-lampstaack-proj/
+```text
+lamp-stack-project/
 │
 ├── README.md
-├── Lampproject.dox.docx
-└── screenshots/
-├── 01-ec2/
-├── 02-apache/
-├── 03-mysql/
-├── 04-php/
-├── 05-virtual-host/
-└── 06-verification/
+├── images/
+│   ├── 01-lamp-overview.png
+│   ├── 02-update-upgrade-packages.png
+│   ├── 03-apache-enable.png
+│   ├── 04-apache-status.png
+│   ├── 05-apache-curl-localhost.png
+│   ├── 06-mysql-install.png
+│   ├── 07-mysql-status.png
+│   ├── 08-mysql-secure-installation.png
+│   ├── 09-mysql-login-auth.png
+│   ├── 10-php-install.png
+│   ├── 11-php-version-check.png
+│   ├── 12-apache-virtualhost-config.png
+│   ├── 13-virtualhost-test-working.png
+│   ├── 14-php-test-script.png
+│   └── 15-php-info-page.png
+│
+└── docs/
+    └── deployment.md
+```
 
 The original detailed documentation contains the full step-by-step deployment process from which this README was created. The documentation can later be migrated into native Markdown under `docs/` for easier searching and navigation on GitHub.
 
 ## Tech Stack & Skills Demonstrated
 
-AWS EC2 · Ubuntu Linux · Apache · PHP · MySQL · SSH · HTTP · Bash/Linux CLI
+**AWS EC2 · Ubuntu Linux · Apache · PHP · MySQL · SSH · HTTP · Bash/Linux CLI**
 
 - Cloud infrastructure provisioning and SSH-based server administration
 - Apache installation, virtual host configuration, and service management
