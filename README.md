@@ -60,6 +60,10 @@ I deployed a traditional **LAMP stack** on an AWS EC2 Ubuntu server, covering th
 
 <img width="637" height="301" alt="image" src="https://github.com/user-attachments/assets/68fa1327-75a1-4474-9082-b7b3777336a0" />
 
+<img width="519" height="398" alt="image" src="https://github.com/user-attachments/assets/2a6905ec-aa75-48d0-b963-9de6e4d1969f" />
+
+<img width="438" height="237" alt="image" src="https://github.com/user-attachments/assets/5e88caf9-be03-4da0-ac87-e20560288ba2" />
+
 
 I launched an Ubuntu EC2 instance (`t3.micro`) on AWS and connected to it remotely using SSH with a private key pair generated during instance setup.
 
