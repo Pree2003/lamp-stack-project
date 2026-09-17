@@ -78,6 +78,14 @@ sudo apt upgrade
 
 I installed Apache, enabled it to start automatically, verified the service was active, and confirmed that it was serving HTTP requests.
 
+<img width="499" height="219" alt="image" src="https://github.com/user-attachments/assets/a71083a2-5caa-441f-9acf-a1b367ffa85f" />
+
+<img width="490" height="303" alt="image" src="https://github.com/user-attachments/assets/5564e8d6-fc5d-4a77-9a08-5048da9763ce" />
+
+<img width="537" height="386" alt="image" src="https://github.com/user-attachments/assets/e67ea0bd-86c1-44f3-8b1e-dd164a307d1e" />
+
+
+
 ```bash
 sudo apt install apache2 -y
 sudo systemctl enable apache2
