@@ -98,6 +98,13 @@ Apache was tested locally using `curl` before being accessed externally through 
 
 ## 3. MySQL Database
 
+<img width="499" height="286" alt="image" src="https://github.com/user-attachments/assets/8fcad401-bc71-428e-9675-c92ab7953ffc" />
+
+<img width="554" height="418" alt="image" src="https://github.com/user-attachments/assets/0f1eec0a-0834-4ad9-8ffe-dadff5ea718b" />
+
+<img width="502" height="277" alt="image" src="https://github.com/user-attachments/assets/ac4e1867-343a-4f8a-8790-6c3e39c78606" />
+
+
 I installed MySQL, enabled the service, and used `mysql_secure_installation` to apply the available security-hardening options.
 
 ```bash
