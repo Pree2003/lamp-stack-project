@@ -120,6 +120,12 @@ Authenticated access to MySQL was then verified.
 
 ## 4. PHP Runtime
 
+<img width="554" height="337" alt="image" src="https://github.com/user-attachments/assets/df393218-1087-4aa6-8404-2ae2a48ef3d2" />
+
+<img width="554" height="306" alt="image" src="https://github.com/user-attachments/assets/ba539f81-805c-45e4-aa8c-d5a6d4b9b6cf" />
+
+
+
 I installed PHP together with the Apache PHP module and MySQL integration package.
 
 ```bash
@@ -130,6 +136,9 @@ php -v
 This allowed Apache to process PHP files and provided PHP-to-MySQL connectivity.
 
 ## 5. Apache Virtual Host & Document Root
+
+<img width="554" height="211" alt="image" src="https://github.com/user-attachments/assets/e647a9db-4fcd-45d5-a74e-f2bc8d5f8260" />
+
 
 Rather than using Apache's default site, I created a dedicated document root and custom virtual host for the project.
 
@@ -153,6 +162,9 @@ The virtual host configuration was:
 
 The default Apache site was disabled and the project virtual host was enabled:
 
+<img width="554" height="364" alt="image" src="https://github.com/user-attachments/assets/d40b11df-e832-41f9-9072-90eeed438063" />
+
+
 ```bash
 sudo a2dissite 000-default.conf
 sudo a2ensite projectlamp.conf
@@ -163,6 +175,9 @@ sudo systemctl reload apache2
 I also updated Apache's directory index configuration so that `index.php` takes priority over `index.html`, allowing the PHP entry point to load by default.
 
 ## 6. Verifying PHP Through Apache
+
+<img width="500" height="228" alt="image" src="https://github.com/user-attachments/assets/71cf587d-79ac-4d73-a618-388d02d771de" />
+
 
 Finally, I created a PHP test script in the project's document root and verified that Apache correctly processed the PHP file.
 
@@ -192,32 +207,6 @@ The resulting PHP information page confirmed that PHP was being executed through
 - MySQL was secured using `mysql_secure_installation`.
 - Screenshots and documentation should be reviewed before publication to ensure that private IP addresses, instance IDs, usernames, local key paths, and other sensitive information are not exposed.
 
-## Repository Structure
-
-```text
-lamp-stack-project/
-│
-├── README.md
-├── images/
-│   ├── 01-lamp-overview.png
-│   ├── 02-update-upgrade-packages.png
-│   ├── 03-apache-enable.png
-│   ├── 04-apache-status.png
-│   ├── 05-apache-curl-localhost.png
-│   ├── 06-mysql-install.png
-│   ├── 07-mysql-status.png
-│   ├── 08-mysql-secure-installation.png
-│   ├── 09-mysql-login-auth.png
-│   ├── 10-php-install.png
-│   ├── 11-php-version-check.png
-│   ├── 12-apache-virtualhost-config.png
-│   ├── 13-virtualhost-test-working.png
-│   ├── 14-php-test-script.png
-│   └── 15-php-info-page.png
-│
-└── docs/
-    └── deployment.md
-```
 
 The original detailed documentation contains the full step-by-step deployment process from which this README was created. The documentation can later be migrated into native Markdown under `docs/` for easier searching and navigation on GitHub.
 
